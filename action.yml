@@ -1,0 +1,19 @@
+name: "Sparse Checkout"
+description: "Partially checkout files or directions from the repository"
+
+inputs:
+  files:
+    description: "List of pathes of files and directories to checkout separated by a space"
+    required: true
+    default: ""
+  ref:
+    description: "Git ref - sha, branch name or git tag"
+    required: true
+    default: "dev"
+  github-token:
+    description: "Github token"
+    required: false
+
+runs:
+  using: "node12"
+  main: "dist/index.js"

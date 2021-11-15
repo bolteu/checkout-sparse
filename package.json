@@ -1,0 +1,32 @@
+{
+  "name": "checkout-sparse",
+  "version": "0.0.0",
+  "description": "git sparse-checkout wrapped in a github action",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.ts -m",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bolteu/checkout-sparse"
+  },
+  "license": "MIT",
+  "keywords": [
+    "actions",
+    "git",
+    "sparse-checkout",
+    "checkout-sparse"
+  ],
+  "author": "bolteu",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/exec": "^1.1.0",
+    "@actions/github": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@vercel/ncc": "^0.31.1",
+    "typescript": "^4.4.4"
+  }
+}
