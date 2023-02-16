@@ -6,7 +6,15 @@ This action is a wrapper for `git sparse-checkout` command
 
 ## `ref`
 
-**Required** The git ref. Could be either SHA, branch name or git tag. Default `"dev"`.
+**Required** The git ref. Could be either branch name or git tag. Default `"dev"`.
+
+Examples of supported `ref`s:
+
+- `dev`
+- `refs/heads/dev`
+
+- `v1.2.3`
+- `refs/tags/v1.2.3`
 
 ## `files`
 
@@ -21,7 +29,7 @@ The GitHub personal access token. Default is `secrets.GITHUB_TOKEN`.
 ```yml
 uses: bolteu/checkout-sparse@main
 with:
-  ref: "dev"
-  files: "dir-A/ dir-B/ file-A file-B"
+  ref: dev
+  files: dir-A/ dir-B/ file-A file-B
   github-token: $GITHUB_TOKEN
 ```
