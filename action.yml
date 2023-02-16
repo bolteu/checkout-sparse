@@ -7,7 +7,7 @@ inputs:
     required: true
     default: ""
   ref:
-    description: "Git ref - sha, branch name or git tag"
+    description: "Git ref, branch name or git tag"
     required: true
     default: "dev"
   github-token:
