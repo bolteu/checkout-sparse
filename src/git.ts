@@ -21,6 +21,14 @@ export class Git {
         ref: `heads/${pattern}`,
       });
 
+      console.log(
+        `Found ${JSON.stringify(
+          response.data,
+          null,
+          2
+        )} refs matching pattern ${pattern}...`
+      );
+
       return !!response.data.length;
     } catch (error) {
       return false;
