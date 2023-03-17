@@ -65,7 +65,8 @@ async function run() {
     let files = core.getInput("files", { required: true });
     let ref = core.getInput("ref", { required: true });
     let token = core.getInput("github-token") || process.env.GITHUB_TOKEN;
-    let repository = `https://${process.env.GITHUB_ACTOR}:${token}@github.com/${process.env.GITHUB_REPOSITORY}.git`;
+    let user = "botblot";
+    let repository = `https://${user}:${token}@github.com/${process.env.GITHUB_REPOSITORY}.git`;
     let octokit = github.getOctokit(token);
 
     let git = new Git(repository, octokit);
