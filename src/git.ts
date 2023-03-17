@@ -31,6 +31,7 @@ export class Git {
 
       return !!response.data.length;
     } catch (error) {
+      console.log(error);
       return false;
     }
   }
