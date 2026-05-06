@@ -1,6 +1,25 @@
 # checkout-sparse action
 
-This action is a wrapper for `git sparse-checkout` command
+> [!WARNING]
+> This action is deprecated.
+>
+> Please migrate to the official `actions/checkout` action, which supports sparse checkout natively.
+>
+> ```yml
+> - uses: actions/checkout@v6
+>   with:
+>     ref: dev
+>     sparse-checkout: |
+>       dir-A/
+>       dir-B/
+>       file-A
+>       file-B
+>     sparse-checkout-cone-mode: true
+> ```
+
+This action is a compatibility wrapper for `actions/checkout` sparse checkout support.
+
+It keeps the existing `checkout-sparse` inputs for migration purposes while delegating checkout behavior to the official `actions/checkout` action.
 
 ## Inputs
 
