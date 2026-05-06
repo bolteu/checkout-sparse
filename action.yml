@@ -1,9 +1,9 @@
 name: "Sparse Checkout"
-description: "Partially checkout files or directions from the repository"
+description: "Deprecated compatibility wrapper for actions/checkout sparse checkout support"
 
 inputs:
   files:
-    description: "List of pathes of files and directories to checkout separated by a space"
+    description: "List of paths of files and directories to checkout separated by a space"
     required: true
     default: ""
   ref:
@@ -15,5 +15,33 @@ inputs:
     required: false
 
 runs:
-  using: "node20"
-  main: "dist/index.js"
+  using: "composite"
+  steps:
+    - name: Deprecation notice
+      shell: bash
+      run: |
+        echo "::warning title=checkout-sparse is deprecated::Please migrate to actions/checkout with sparse-checkout. See this action README for migration details."
+
+    - name: Normalize sparse checkout paths
+      id: sparse-checkout
+      shell: bash
+      env:
+        FILES: ${{ inputs.files }}
+      run: |
+        set -f
+        read -r -a paths <<< "$FILES"
+
+        {
+          echo "patterns<<EOF"
+          printf '%s\n' "${paths[@]}"
+          echo "EOF"
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Checkout repository
+      uses: actions/checkout@v6
+      with:
+        ref: ${{ inputs.ref }}
+        token: ${{ inputs.github-token || github.token }}
+        sparse-checkout: ${{ steps.sparse-checkout.outputs.patterns }}
+        sparse-checkout-cone-mode: true
+        fetch-depth: 1
