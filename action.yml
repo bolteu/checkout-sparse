@@ -20,7 +20,7 @@ runs:
     - name: Deprecation notice
       shell: bash
       run: |
-        echo "::warning title=checkout-sparse is deprecated::Please migrate to actions/checkout with sparse-checkout. See this action README for migration details."
+        echo "::warning title=checkout-sparse is deprecated::Please migrate to actions/checkout with sparse-checkout. See https://github.com/bolteu/checkout-sparse#readme for migration details."
 
     - name: Normalize sparse checkout paths
       id: sparse-checkout
